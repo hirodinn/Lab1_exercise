@@ -30,21 +30,20 @@ def generate_launch_description():
         output="screen",
     )
 
-    joint_state_publisher_gui = Node(
-        package="joint_state_publisher_gui",
-        executable="joint_state_publisher_gui",
-        output="screen",
-    )
+    nodes = [robot_state_publisher]
 
-    rviz = Node(
-        package="rviz2",
-        executable="rviz2",
-        arguments=["-d", os.path.join(pkg_share, "rviz", "diffdrive_bot.rviz"), "-f", "base_footprint"],
-        output="screen",
-    )
+    try:
+        get_package_share_directory("joint_state_publisher_gui")
+        nodes.append(
+            Node(
+                package="joint_state_publisher_gui",
+                executable="joint_state_publisher_gui",
+                output="screen",
+            )
+        )
+    except Exception:
+        pass
 
-    return LaunchDescription([
-        robot_state_publisher,
-        joint_state_publisher_gui,
-        rviz,
-    ])
+    nodes.append(rviz)
+
+    return LaunchDescription(nodes)
