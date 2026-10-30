@@ -30,6 +30,13 @@ def generate_launch_description():
         output="screen",
     )
 
+    rviz = Node(
+        package="rviz2",
+        executable="rviz2",
+        arguments=["-d", os.path.join(pkg_share, "rviz", "diffdrive_bot.rviz"), "-f", "base_footprint"],
+        output="screen",
+    )
+
     nodes = [robot_state_publisher]
 
     try:
