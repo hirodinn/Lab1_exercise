@@ -1,5 +1,7 @@
 # Lab 1 Exercise: Program diffdrive_bot
 
+**Name:** Hire Bikila  
+**ID:** UGR/8021/16  
 **Course:** Introduction to Robotics and Intelligent Systems  
 **Program:** BSc in Software Engineering  
 **Academic Year:** 2026  
